@@ -1,0 +1,19 @@
+
+
+
+class Book:
+    def __init__(self, title, author, year):
+        self.title = title
+        self.author = author
+        self.year = year
+
+    def info(self) -> str:
+        """
+        Возвращает информацию о книге: название, автор, год издания в виде строки
+        :return:
+        """
+        return f'Книга "{self.title}" от {self.author}, {self.year} года издания'
+
+b = Book('Lolsk of the lolbruh', 'Arnold Lolchpeckovich', 1487)
+print(b.info())
+
