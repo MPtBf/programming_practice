@@ -12,7 +12,6 @@
     обновлять количество товаров перед
     оформлением заказа.
 """
-from win32pdh import counter_status_error
 
 
 # online store
@@ -195,5 +194,6 @@ customer.orderProducts()
 print()
 
 customer.viewOrderHistory()
+
 
 
