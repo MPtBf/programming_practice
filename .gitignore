@@ -1,0 +1,24 @@
+# Окружение
+.env
+p6/dogs/.env
+venv/
+../.venv/
+p6/dj_env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.ipynb_checkpoints
+
+# Django
+db.sqlite3
+db.sqlite3-journal
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store

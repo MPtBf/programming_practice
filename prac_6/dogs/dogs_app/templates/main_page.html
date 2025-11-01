@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOGS WEB APP</title>
+</head>
+<body style="background-color: #222222; color: #dddddd; font-family: Arial, sans-serif">
+<form method="post">
+
+{% csrf_token %}
+<input type="text" name="breeds" placeholder="Введите названия пород через запятую с пробелом...">
+<button type="submit">Посмотреть их фотки</button>
+</form>
+
+{% if feedback %}
+    <p style="color: #ff5555">{{ feedback }}</p>
+{% endif %}
+
+{% for item in imgsData %}
+    <div>
+        {{ item.breed|capfirst }}: <img src="{{ item.url }}" style="width: 25vw">
+    </div>
+{% endfor %}
+
+<h1>Список всех ваших собак:</h1>
+{% for item in breedsData %}
+    <p>{{ item.num }}) {{ item.breed|capfirst }}</p>
+{% endfor %}
+</body>
+</html>
