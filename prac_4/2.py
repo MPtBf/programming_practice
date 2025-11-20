@@ -14,47 +14,88 @@
 from abc import ABC, abstractmethod
 
 
-
-# transport
-
 class Transport(ABC):
-    def __init__(self, type, color):
+    """Абстрактный класс транспорта"""
+
+    def __init__(self, type: str, color: str):
         self.type = type
         self.color = color
 
     @abstractmethod
-    def getInfo(self):
+    def getInfo(self) -> str:
+        """
+        Метод для получения информации о данном транспорте
+        :return: строка с информацией
+        """
         pass
 
 
 class Car(Transport):
-    def __init__(self, color):
-        super().__init__('Легковая Машина', color)
+    """Класс легковой машины"""
 
-    def getInfo(self):
-        return f'Тип: {self.type}, цвет: {self.color}, тип кузова: седан, максимальное давление на ремни безопасности: 1800кг'
+    def __init__(self, color: str,
+                 bodyType: str,
+                 maximumSeatBeltsPressure: int):
+        super().__init__('Легковая Машина', color)
+        self.bodyType = bodyType
+        self.maximumSeatBeltsPressure = maximumSeatBeltsPressure
+
+    def getInfo(self) -> str:
+        """
+        Метод для получения информации о данном транспорте
+        :return: строка с информацией
+        """
+        return (f'Тип: {self.type}, цвет: {self.color}, '
+                f'тип кузова: {self.bodyType}, максимальное давление на ремни '
+                f'безопасности: {self.maximumSeatBeltsPressure} кг')
+
 
 class Bus(Transport):
-    def __init__(self, color):
-        super().__init__('Автобус', color)
+    """Класс автобуса"""
 
-    def getInfo(self):
-        return f'Тип: {self.type}, цвет: {self.color}, наличие поручней: да, вместимость пассажиров: 20 человек'
+    def __init__(self, color: str,
+                 doHaveHandrails: bool,
+                 passengerCapacity: int):
+        super().__init__('Автобус', color)
+        self.doHaveHandrails = doHaveHandrails
+        self.passengerCapacity = passengerCapacity
+
+    def getInfo(self) -> str:
+        """
+        Метод для получения информации о данном транспорте
+        :return: строка с информацией
+        """
+        return (f'Тип: {self.type}, цвет: {self.color}, '
+                f'наличие поручней: {self.doHaveHandrails}, '
+                f'вместимость пассажиров: {self.passengerCapacity} человек')
+
 
 class Truck(Transport):
-    def __init__(self, color):
+    """Класс грузовика"""
+
+    def __init__(self, color: str,
+                 maxCargoWeightTons: int,
+                 trailerVolumeCubMeters: int):
         super().__init__('Грузовик', color)
+        self.maxCargoWeightTons = maxCargoWeightTons
+        self.trailerVolumeCubMeters = trailerVolumeCubMeters
 
-    def getInfo(self):
-        return f'Тип: {self.type}, цвет: {self.color}, максимальный вес груза: 30 тонн, объём прицепа: 33 кв. м'
+    def getInfo(self) -> str:
+        """
+        Метод для получения информации о данном транспорте
+        :return: строка с информацией
+        """
+        return (f'Тип: {self.type}, цвет: {self.color}, '
+                f'максимальный вес груза: {self.maxCargoWeightTons} тонн, '
+                f'объём прицепа: {self.trailerVolumeCubMeters} кв. м')
 
 
+if __name__ == '__main__':
 
-car = Car('Белый')
-bus = Bus('Синий')
-truck = Truck('Серый')
+    car = Car('Белый', 'Седан', 1800)
+    bus = Bus('Синий', True, 25)
+    truck = Truck('Серый', 40, 33)
 
-print(car.getInfo())
-print(bus.getInfo())
-print(truck.getInfo())
-
+    print("Информация о car -", car.getInfo())
+    print("Информация о bus -", bus.getInfo())
+    print("Информация о truck -", truck.getInfo())

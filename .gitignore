@@ -1,9 +1,10 @@
 # Окружение
+yandex/
 .env
-p6/dogs/.env
+prac_6/dogs/.env
 venv/
-../.venv/
-p6/dj_env/
+.venv/
+prac_6/dj_env/
 
 # Python
 __pycache__/
